@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal interface ISecurityEmail
+    internal abstract class MagicCommunication
     {
-        public MagicEmail SecurityEmail { get; set; }
+        public abstract required string Address { get; init; }
     }
 }

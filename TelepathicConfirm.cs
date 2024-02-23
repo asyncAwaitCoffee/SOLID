@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal class MagicEmail : MagicCommunication
+    internal class TelepathicConfirm : MagicCommunication
     {
         public override required string Address { get; init; }
     }

@@ -14,15 +14,18 @@
              * -O-
              * If we want to add new functionality, we should not change existing code.
              * Instead, we should write the code in a way that it will accept new functionality
-             * if it implements a certain interface
+             * if it implements a certain interface.
              * 
              * -L-
              * It should be possible to pass any child class of one parent class to the program
-             * without breaking its logic
+             * without breaking its logic.
              * 
              * -I-
              * The class should not depend on parts of interface that it does not need,
              * thereby avoiding empty implementations.
+             * 
+             * -D-
+             * Depend on abstractions - not concrete implementations.
              * 
              */
             Item paper = new Item() { Name = "Paper", Price = 1M, Quantity = 50 };
@@ -42,11 +45,14 @@
             PaymentProcessCash paymentProcessCash = new PaymentProcessCash("A123", authorizerSMS);
 
             MagicEmail magicEmail = new MagicEmail() { Address = "magic@email.world" };
-            PaymentProcessMagicBeans paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail, authorizerEmail);
+            TelepathicConfirm telepathicConfirm = new TelepathicConfirm() { Address = "thoughts@manager.head" };
+            PaymentProcessMagicBeans paymentProcessmagicBeansA = new PaymentProcessMagicBeans(magicEmail, authorizerEmail);
+            PaymentProcessMagicBeans paymentProcessmagicBeansB = new PaymentProcessMagicBeans(telepathicConfirm, authorizerEmail);
 
             paymentProcessCard.Pay(order);
             paymentProcessCash.Pay(order);
-            paymentProcessmagicBeans.Pay(order);
+            paymentProcessmagicBeansA.Pay(order);
+            paymentProcessmagicBeansB.Pay(order);
         }
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal class MagicEmail : MagicCommunication
+    internal interface ISecurityMagicCommunication
     {
-        public override required string Address { get; init; }
+        public MagicCommunication TheMagicCommunication { get; set; }
     }
 }
