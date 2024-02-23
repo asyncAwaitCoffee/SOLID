@@ -4,6 +4,13 @@
     {
         static void Main(string[] args)
         {
+            /*
+             * PROBLEM:
+             * 
+             * Everything is going on in one single class - god class.
+             * It has too many responsibilities and becomes overly complex to maintain.
+             * 
+             */
             Item paper = new Item() { Name = "Paper", Price = 1M, Quantity = 50 };
             Item pencil = new Item() { Name = "Pencil", Price = 5.25M, Quantity = 4 };
             Item eraser = new Item() { Name = "Eraser", Price = 1.99M, Quantity = 1 };
