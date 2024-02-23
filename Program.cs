@@ -20,6 +20,10 @@
              * It should be possible to pass any child class of one parent class to the program
              * without breaking its logic
              * 
+             * -I-
+             * The class should not depend on parts of interface that it does not need,
+             * thereby avoiding empty implementations.
+             * 
              */
             Item paper = new Item() { Name = "Paper", Price = 1M, Quantity = 50 };
             Item pencil = new Item() { Name = "Pencil", Price = 5.25M, Quantity = 4 };
@@ -31,15 +35,34 @@
             order.AddItem(pencil);
             order.AddItem(eraser);
 
-            PaymentProcess paymentProcessCard = new PaymentProcessCard("A123");
-            PaymentProcess paymentProcessCash = new PaymentProcessCash("A123");
+            PaymentProcessCard paymentProcessCard = new PaymentProcessCard("A123");
+            PaymentProcessCash paymentProcessCash = new PaymentProcessCash("A123");
 
             MagicEmail magicEmail = new MagicEmail() { Address = "magic@email.world" };
-            PaymentProcess paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail);
+            PaymentProcessMagicBeans paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail);
 
+            DoPaymentAuthViaSMS(paymentProcessCard);
             paymentProcessCard.Pay(order);
+
+            DoPaymentAuthViaSMS(paymentProcessCash);
             paymentProcessCash.Pay(order);
+
+            DoPaymentAuthViaEmail(paymentProcessmagicBeans);
             paymentProcessmagicBeans.Pay(order);
+
+
+
+
+
+            void DoPaymentAuthViaSMS(IPaymentAuth paymentAuth)
+            {
+                paymentAuth.AuthViaSMS();
+            }
+            
+            void DoPaymentAuthViaEmail(IPaymentAuth paymentAuth)
+            {
+                paymentAuth.AuthViaEmail();
+            }
         }
     }
 }
