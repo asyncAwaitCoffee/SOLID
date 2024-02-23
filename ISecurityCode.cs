@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal abstract class PaymentProcess
+    internal interface ISecurityCode
     {
-        public abstract void Pay(Order order);        
+        public string SecurityCode { get; set; }
     }
 }

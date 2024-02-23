@@ -17,7 +17,8 @@
              * if it implements a certain interface
              * 
              * -L-
-             * 
+             * It should be possible to pass any child class of one parent class to the program
+             * without breaking its logic
              * 
              */
             Item paper = new Item() { Name = "Paper", Price = 1M, Quantity = 50 };
@@ -30,13 +31,15 @@
             order.AddItem(pencil);
             order.AddItem(eraser);
 
-            PaymentProcess paymentProcessCard = new PaymentProcessCard();
-            PaymentProcess paymentProcessCash = new PaymentProcessCash();
-            PaymentProcess paymentProcessmagicBeans = new PaymentProcessMagicBeans();
+            PaymentProcess paymentProcessCard = new PaymentProcessCard("A123");
+            PaymentProcess paymentProcessCash = new PaymentProcessCash("A123");
 
-            paymentProcessCard.Pay(order, "A123");
-            paymentProcessCash.Pay(order, "A123");
-            paymentProcessmagicBeans.Pay(order, "A123"); // we finally accept magic beans!
+            MagicEmail magicEmail = new MagicEmail() { Address = "magic@email.world" };
+            PaymentProcess paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail);
+
+            paymentProcessCard.Pay(order);
+            paymentProcessCash.Pay(order);
+            paymentProcessmagicBeans.Pay(order);
         }
     }
 }

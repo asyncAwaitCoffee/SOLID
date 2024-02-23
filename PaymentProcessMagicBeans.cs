@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal class PaymentProcessMagicBeans : PaymentProcess
+    internal class PaymentProcessMagicBeans(MagicEmail securityEmail) : PaymentProcess, ISecurityEmail
     {
-        public override void Pay(Order order, string securityCode)
+        public MagicEmail SecurityEmail { get; set; } = securityEmail;
+        public override void Pay(Order order)
         {
-            Console.WriteLine($"Processing -magic beans- payment for {order.OrderPrice()} with security code {securityCode}");
+            Console.WriteLine($"Processing -magic beans- payment for {order.OrderPrice()} with magic email {SecurityEmail.Address}");
             order.Status = 1;
         }
     }
