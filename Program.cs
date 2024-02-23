@@ -5,10 +5,19 @@
         static void Main(string[] args)
         {
             /*
-             * PROBLEM:
+             * PROBLEMS:
              * 
+             * -S-
              * Everything is going on in one single class - god class.
              * It has too many responsibilities and becomes overly complex to maintain.
+             * 
+             * -O-
+             * If we want to add new functionality, we should not change existing code.
+             * Instead, we should write the code in a way that it will accept new functionality
+             * if it implements a certain interface
+             * 
+             * -L-
+             * 
              * 
              */
             Item paper = new Item() { Name = "Paper", Price = 1M, Quantity = 50 };
@@ -21,11 +30,13 @@
             order.AddItem(pencil);
             order.AddItem(eraser);
 
-            PaymentProcess paymentProcess = new PaymentProcess();
+            PaymentProcess paymentProcessCard = new PaymentProcessCard();
+            PaymentProcess paymentProcessCash = new PaymentProcessCash();
+            PaymentProcess paymentProcessmagicBeans = new PaymentProcessMagicBeans();
 
-            paymentProcess.PayCash(order, "A123");
-            paymentProcess.PayCard(order, "A123");
-            //paymentProcess.Pay(order, "magic beans", "A123");
+            paymentProcessCard.Pay(order, "A123");
+            paymentProcessCash.Pay(order, "A123");
+            paymentProcessmagicBeans.Pay(order, "A123"); // we finally accept magic beans!
         }
     }
 }
