@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal interface IPaymentAuth
+    internal interface IPaymentSMSAuth
     {
         public void AuthViaSMS();
-        public void AuthViaEmail();
     }
 }

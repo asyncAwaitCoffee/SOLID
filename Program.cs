@@ -54,12 +54,12 @@
 
 
 
-            void DoPaymentAuthViaSMS(IPaymentAuth paymentAuth)
+            void DoPaymentAuthViaSMS(IPaymentSMSAuth paymentAuth)
             {
                 paymentAuth.AuthViaSMS();
             }
             
-            void DoPaymentAuthViaEmail(IPaymentAuth paymentAuth)
+            void DoPaymentAuthViaEmail(IPaymentEmailAuth paymentAuth)
             {
                 paymentAuth.AuthViaEmail();
             }

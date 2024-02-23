@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal class PaymentProcessCash(string securityCode) : PaymentProcess, ISecurityCode, IPaymentAuth
+    internal class PaymentProcessCash(string securityCode) : PaymentProcess, ISecurityCode, IPaymentSMSAuth
     {
         public string SecurityCode { get; set; } = securityCode;
-
-        public void AuthViaEmail()
-        {
-            throw new NotImplementedException();
-        }
 
         public void AuthViaSMS()
         {
