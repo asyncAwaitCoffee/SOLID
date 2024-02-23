@@ -14,9 +14,11 @@
             order.AddItem(pencil);
             order.AddItem(eraser);
 
-            order.Pay("card", "A123");
-            order.Pay("cash", "A123");
-            //order.Pay("magic beans", "A123");
+            PaymentProcess paymentProcess = new PaymentProcess();
+
+            paymentProcess.PayCash(order, "A123");
+            paymentProcess.PayCard(order, "A123");
+            //paymentProcess.Pay(order, "magic beans", "A123");
         }
     }
 }

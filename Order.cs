@@ -8,7 +8,7 @@ namespace SOLID
 {
     internal class Order
     {
-        public byte Status { get; set; }
+        public byte Status { get; set; } = 0;
         public List<Item> Items { get; set; } = [];
         public void AddItem(Item item)
         {
@@ -17,22 +17,6 @@ namespace SOLID
         public decimal OrderPrice()
         {
             return Items.Aggregate(0M, ( sum, item) => sum + item.Price);
-        }
-
-        public void Pay(string paymenttype, string securityCode)
-        {
-            if (paymenttype == "cash")
-            {
-                Console.WriteLine($"Processing -cash- payment for {OrderPrice()} with security code {securityCode}");
-            }
-            else if (paymenttype == "card")
-            {
-                Console.WriteLine($"Processing -card- payment for {OrderPrice()} with security code {securityCode}");
-            }
-            else
-            {
-                throw new ArgumentException($"The -{paymenttype}- type of payment is not availible");
-            }
         }
     }
 }
