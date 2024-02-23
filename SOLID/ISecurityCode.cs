@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
-    internal abstract class MagicCommunication
+    internal interface ISecurityCode
     {
-        public abstract required string Address { get; init; }
+        public string SecurityCode { get; set; }
     }
 }

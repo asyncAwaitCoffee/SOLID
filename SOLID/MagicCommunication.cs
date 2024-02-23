@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
-    internal class MagicEmail : MagicCommunication
+    internal abstract class MagicCommunication
     {
-        public override required string Address { get; init; }
+        public abstract required string Address { get; init; }
     }
 }

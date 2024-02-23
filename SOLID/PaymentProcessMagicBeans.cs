@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
     internal class PaymentProcessMagicBeans(MagicCommunication magicCommunication, Authorizer emailAuthorizer) : PaymentProcess, ISecurityMagicCommunication
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
-    internal interface ISecurityCode
+    internal abstract class PaymentProcess
     {
-        public string SecurityCode { get; set; }
+        public abstract void Pay(Order order);
     }
 }

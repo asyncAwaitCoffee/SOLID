@@ -1,4 +1,4 @@
-﻿namespace SOLID
+﻿namespace SOLID.SOLID
 {
     internal class Program
     {

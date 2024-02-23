@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
-    internal abstract class PaymentProcess
+    internal class MagicEmail : MagicCommunication
     {
-        public abstract void Pay(Order order);        
+        public override required string Address { get; init; }
     }
 }

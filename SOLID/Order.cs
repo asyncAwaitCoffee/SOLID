@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID.SOLID
 {
     internal class Order
     {
@@ -16,7 +16,7 @@ namespace SOLID
         }
         public decimal OrderPrice()
         {
-            return Items.Aggregate(0M, ( sum, item) => sum + item.Price);
+            return Items.Aggregate(0M, (sum, item) => sum + item.Price);
         }
     }
 }
