@@ -35,34 +35,18 @@
             order.AddItem(pencil);
             order.AddItem(eraser);
 
-            PaymentProcessCard paymentProcessCard = new PaymentProcessCard("A123");
-            PaymentProcessCash paymentProcessCash = new PaymentProcessCash("A123");
+            AuthorizerSMS authorizerSMS = new AuthorizerSMS();
+            AuthorizerEmail authorizerEmail = new AuthorizerEmail();
+
+            PaymentProcessCard paymentProcessCard = new PaymentProcessCard("A123", authorizerSMS);
+            PaymentProcessCash paymentProcessCash = new PaymentProcessCash("A123", authorizerSMS);
 
             MagicEmail magicEmail = new MagicEmail() { Address = "magic@email.world" };
-            PaymentProcessMagicBeans paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail);
+            PaymentProcessMagicBeans paymentProcessmagicBeans = new PaymentProcessMagicBeans(magicEmail, authorizerEmail);
 
-            DoPaymentAuthViaSMS(paymentProcessCard);
             paymentProcessCard.Pay(order);
-
-            DoPaymentAuthViaSMS(paymentProcessCash);
             paymentProcessCash.Pay(order);
-
-            DoPaymentAuthViaEmail(paymentProcessmagicBeans);
             paymentProcessmagicBeans.Pay(order);
-
-
-
-
-
-            void DoPaymentAuthViaSMS(IPaymentSMSAuth paymentAuth)
-            {
-                paymentAuth.AuthViaSMS();
-            }
-            
-            void DoPaymentAuthViaEmail(IPaymentEmailAuth paymentAuth)
-            {
-                paymentAuth.AuthViaEmail();
-            }
         }
     }
 }

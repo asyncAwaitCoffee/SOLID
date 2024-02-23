@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace SOLID
 {
-    internal class PaymentProcessCash(string securityCode) : PaymentProcess, ISecurityCode, IPaymentSMSAuth
+    internal class PaymentProcessCash(string securityCode, Authorizer smsAuthorizer) : PaymentProcess, ISecurityCode
     {
         public string SecurityCode { get; set; } = securityCode;
-
-        public void AuthViaSMS()
-        {
-            Console.WriteLine($"Authorized via security code {SecurityCode}");
-        }
+        public Authorizer SMSAuthorizer { get; set; } = smsAuthorizer;
 
         public override void Pay(Order order)
         {
+            SMSAuthorizer.Authorize(SecurityCode);
             Console.WriteLine($"Processing -cash- payment for {order.OrderPrice()}");
             order.Status = 1;
         }
